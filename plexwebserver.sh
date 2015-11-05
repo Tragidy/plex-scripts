@@ -1,7 +1,7 @@
 #!/bin/bash
 # PLEX ARM Chromecast bypass installer for Debian and Ubuntu
 # By TRAGiDY https://github.com/Tragidy/
-
+# 
 # Released Under Apache 2.0 License 
 # http://www.apache.org/licenses/LICENSE-2.0
 
@@ -65,7 +65,8 @@ echo "DNS set to use OpenDNS, resolver file locked"
 # Create NGINX folders, and generating SSL
 echo "Creating Webserver and SSL Configuration"
 mkdir -p /etc/nginx/ssl
-openssl req -x509 -nodes -days 36500 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
+openssl req -x509 -nodes -days 36500 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt &
+wait $!
 touch /etc/nginx/sites-enabled/chromecast
 
 echo "server {" >> /etc/nginx/sites-enabled/chromecast
@@ -84,5 +85,5 @@ echo "}" >> /etc/nginx/sites-enabled/chromecast
 
 # Complete
 clear
-echo "Process complete"
+echo "Process complete, remember to modify your plex.js"
 service nginx restart
