@@ -87,3 +87,4 @@ echo "}" >> /etc/nginx/sites-enabled/chromecast
 clear
 echo "Process complete, remember to modify your plex.js"
 service nginx restart
+EOF
