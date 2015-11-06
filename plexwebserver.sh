@@ -20,8 +20,7 @@ echo "Running this script as "$USER""
 sleep 3
 
 echo "Making sure system is up to date..."
-sleep 1
-echo "Running APT-GET UPDATE Please Wait..."
+echo "Running UPDATE Please Wait..."
 apt-get update -y >/dev/null 2>&1 &
 wait $!
 clear
@@ -34,14 +33,18 @@ echo "Installed Applications, creating folder structure"
 
 # Create folders, download plex.js and change permissions
 mkdir -p /var/www/chromecast/production/js
+mkdir -p /var/www/chromecast/web/js
 cd /var/www/chromecast/production/js
-echo "Folders created.. fetching latest plex.js"
+echo "Folders created.. fetching latest chromecast plex.js"
+wget https://raw.githubusercontent.com/Tragidy/plex-scripts/master/js/chromecast/plex.js >/dev/null 2>&1 &
+wait $!
+echo ".... fetching latest web client plex.js"
+cd /var/www/chromecast/web/js
 wget https://raw.githubusercontent.com/Tragidy/plex-scripts/master/js/chromecast/plex.js >/dev/null 2>&1 &
 wait $!
 chown -R www-data:www-data /var/www
-echo "Folders created.. fetching javascript complete"
+echo "Fetching javascript files complete"
 sleep 1
-echo ""
 
 # Setup plex server ip
 echo "Type the plex server ip that you want to set, followed by [ENTER]:"
@@ -82,8 +85,8 @@ echo "autoindex on;" >> /etc/nginx/sites-enabled/chromecast
 echo "}" >> /etc/nginx/sites-enabled/chromecast
 
 # Complete
-clear
-echo "Process complete"
 service nginx restart
+clear
+echo "Process complete, rock and roll!"
 
 EOF
