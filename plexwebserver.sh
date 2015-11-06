@@ -56,12 +56,15 @@ mkdir -p /var/www/chromecast/production/js
 mkdir -p /var/www/webjs/web/js
 cd /var/www/chromecast/production/js
 echo "Folders created.. fetching latest chromecast plex.js"
-wget https://raw.githubusercontent.com/Tragidy/plex-scripts/master/js/chromecast/plex.js >/dev/null 2>&1 &
+wget http://chromecast.plex.tv/production/js/plex.js >/dev/null 2>&1 &
+# Re-write Contribution by Mike @ HTPCGuides
 wait $!
+sed -i s'/canPlay:function(e,t){/canPlay:function(e,t){return false;/' plex.js
 echo ".... fetching latest web client plex.js"
 cd /var/www/webjs/web/js
-wget https://raw.githubusercontent.com/Tragidy/plex-scripts/master/js/web/plex.js >/dev/null 2>&1 &
+wget http://app.plex.tv/web/js/plex.js >/dev/null 2>&1 &
 wait $!
+sed -i s'/validateTranscoder:function(e,t){/validateTranscoder:function(e,t){return false;/' plex.js
 cd /
 chown -R www-data:www-data /var/www
 echo "Fetching javascript files complete"
