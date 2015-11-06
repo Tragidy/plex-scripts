@@ -1,6 +1,7 @@
 # plex-scripts
 Various Plex Media Server Scripts
 These are just automation scripts, as such the scripts may or may not work for you.
+
 All Scripts should be ran with Superuser.
 
 plexarm.sh
