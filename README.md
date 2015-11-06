@@ -4,12 +4,6 @@ These are just automation scripts, as such the scripts may or may not work for y
 
 All Scripts should be ran with Superuser.
 
-plexarm.sh
-A simple install script to install Plex on Debian Jessie ARMHF platform
-
-Instructions:
-wget https://raw.githubusercontent.com/Tragidy/plex-scripts/master/plexarm.sh  && bash plexarm.sh
-
 plexwebserver.sh
 To allow chromecast playback from a transcode from an arm device.
 
