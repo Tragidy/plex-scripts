@@ -20,7 +20,7 @@ echo "Running this script as "$USER""
 sleep 3
 
 echo "Making sure system is up to date..."
-sleep 2
+sleep 1
 echo "Running APT-GET UPDATE Please Wait..."
 apt-get update -y >/dev/null 2>&1 &
 wait $!
@@ -36,9 +36,7 @@ echo "Installed Applications, creating folder structure"
 mkdir -p /var/www/chromecast/production/js
 cd /var/www/chromecast/production/js
 echo "Folders created.. fetching latest plex.js"
-echo "Remember to make edits or use your own plex.js in /var/www/chromecast/"
-sleep 1
-wget http://chromecast.plex.tv/production/js/plex.js >/dev/null 2>&1 &
+wget https://raw.githubusercontent.com/Tragidy/plex-scripts/master/js/chromecast/plex.js >/dev/null 2>&1 &
 wait $!
 chown -R www-data:www-data /var/www
 echo "Folders created.. fetching javascript complete"
@@ -85,6 +83,7 @@ echo "}" >> /etc/nginx/sites-enabled/chromecast
 
 # Complete
 clear
-echo "Process complete, remember to modify your plex.js"
+echo "Process complete"
 service nginx restart
+
 EOF
