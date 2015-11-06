@@ -40,8 +40,9 @@ wget https://raw.githubusercontent.com/Tragidy/plex-scripts/master/js/chromecast
 wait $!
 echo ".... fetching latest web client plex.js"
 cd /var/www/chromecast/web/js
-wget https://raw.githubusercontent.com/Tragidy/plex-scripts/master/js/chromecast/plex.js >/dev/null 2>&1 &
+wget https://raw.githubusercontent.com/Tragidy/plex-scripts/master/js/web/plex.js >/dev/null 2>&1 &
 wait $!
+cd /
 chown -R www-data:www-data /var/www
 echo "Fetching javascript files complete"
 sleep 1
