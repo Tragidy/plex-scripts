@@ -40,7 +40,7 @@ echo "Remember to make edits or use your own plex.js in /var/www/chromecast/"
 sleep 1
 wget http://chromecast.plex.tv/production/js/plex.js >/dev/null 2>&1 &
 wait $!
-#sudo chown -R www-data:www-data /var/www
+chown -R www-data:www-data /var/www
 echo "Folders created.. fetching javascript complete"
 sleep 1
 echo ""
