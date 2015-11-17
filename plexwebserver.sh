@@ -1,15 +1,9 @@
 #!/bin/bash
-# PLEX ARM Chromecast bypass installer for Debian and Ubuntu
+# PLEX ARM transcoder limitation interceptor
 # By TRAGiDY https://github.com/Tragidy/
-# 
 # Released Under Apache 2.0 License 
 # http://www.apache.org/licenses/LICENSE-2.0
-
 # This script will work on Debian, Ubuntu, maybe other debian based distros
-# of the same families, although no support is offered for them. It isn't
-# bulletproof but it will probably work if you simply want issue one command
-# on your Debian/Ubuntu box. It has been designed to be as unobtrusive and
-# universal as possible.
 
 clear
 echo "PLEX ARM Chromecast bypass"   
