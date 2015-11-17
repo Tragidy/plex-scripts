@@ -13,7 +13,7 @@ echo "This script should be ran with root"
 echo "Running this script as "$USER""
 sleep 3
 
-# Change DNS Servers, keeping Google DNS away however you are welcome to use them
+# OpenDNS
 echo "Using reliable DNS Servers"
 rm -rf /etc/resolv.conf
 touch /etc/resolv.conf
@@ -104,5 +104,3 @@ echo "}" >> /etc/nginx/sites-enabled/webjs
 service nginx restart
 clear
 echo "Process complete, rock and roll!"
-
-EOF
