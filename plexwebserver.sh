@@ -15,6 +15,7 @@ sleep 3
 
 # OpenDNS
 echo "Using reliable DNS Servers"
+cp /etc/resolv.conf /etc/resolv.conf.bakup
 rm -rf /etc/resolv.conf
 touch /etc/resolv.conf
 echo "nameserver 208.67.222.222" >> /etc/resolv.conf
