@@ -8,10 +8,7 @@
 clear
 echo "PLEX ARM Chromecast bypass"   
 echo "script by TRAGiDY https://github.com/Tragidy/"  
-date;
-echo "This script should be ran with root"
 echo "Running this script as "$USER""
-sleep 3
 
 # OpenDNS
 echo "Using reliable DNS Servers"
