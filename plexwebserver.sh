@@ -6,7 +6,7 @@
 # This script will work on Debian, Ubuntu, maybe other debian based distros
 
 clear
-echo "PLEX ARM Chromecast bypass"   
+echo "PLEX for ARM DNS Trick"   
 echo "script by TRAGiDY https://github.com/Tragidy/"  
 echo "Running this script as "$USER""
 
