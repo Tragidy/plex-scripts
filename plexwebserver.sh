@@ -9,9 +9,7 @@ clear
 echo "PLEX for ARM DNS Trick"   
 echo "script by TRAGiDY https://github.com/Tragidy/"  
 echo "Running this script as "$USER""
-
-# OpenDNS
-echo "Using reliable DNS Servers"
+echo "Using reliable non google, OpenDNS Servers"
 cp /etc/resolv.conf /etc/resolv.conf.bakup
 rm -rf /etc/resolv.conf
 touch /etc/resolv.conf
@@ -19,37 +17,27 @@ echo "nameserver 208.67.222.222" >> /etc/resolv.conf
 echo "nameserver 208.67.220.220" >> /etc/resolv.conf
 chattr +i /etc/resolv.conf
 echo "DNS set to use OpenDNS, resolver file locked"
-
-# Setup plex server ip
 echo "Type the plex server ip that you want to set in hosts file, followed by [ENTER]:"
-
 read plexip
-#echo "$plexip  app.plex.tv chromecast.plex.tv" >> /etc/hosts -- issue reported.
 echo "$plexip app.plex.tv" >> /etc/hosts
 echo "$plexip chromecast.plex.tv" >> /etc/hosts
 echo "Setting plex services ip to $plexip"
 sleep 2
 echo "That's all we need proceeding with installation."
-
 echo "Making sure system is up to date..."
-echo "Running UPDATE Please Wait..."
 apt-get update -y >/dev/null 2>&1 &
 wait $!
 echo "Updating packages completed"
 clear
-
 echo "Installing NGINX, DNSMASQ and OpenSSL"
 apt-get install openssl dnsmasq nginx -y &
 wait $!
 echo "Installed Applications, creating folder structure"
-
-# Create folders, download plex.js and change permissions
 mkdir -p /var/www/chromecast/production/js
 mkdir -p /var/www/webjs/web/js
 cd /var/www/chromecast/production/js
 echo "Folders created.. fetching latest chromecast plex.js"
 wget http://chromecast.plex.tv/production/js/plex.js >/dev/null 2>&1 &
-# Re-write Contribution by Mike @ HTPCGuides
 wait $!
 sed -i s'/canPlay:function(e,t){/canPlay:function(e,t){return false;/' plex.js
 echo ".... fetching latest web client plex.js"
@@ -61,15 +49,12 @@ cd /
 chown -R www-data:www-data /var/www
 echo "Fetching javascript files complete"
 sleep 1
-
-# Create NGINX folders, and generating SSL
-echo "HTTPD and SSL "
+echo "nginx with SSL "
 mkdir -p /etc/nginx/ssl
 openssl req -x509 -nodes -days 36500 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt &
 wait $!
 touch /etc/nginx/sites-enabled/webjs
 touch /etc/nginx/sites-enabled/chromecast
-
 echo "server {" >> /etc/nginx/sites-enabled/chromecast
 echo "server_name chromecast.plex.tv;" >> /etc/nginx/sites-enabled/chromecast
 echo "listen 80;" >> /etc/nginx/sites-enabled/chromecast
@@ -83,7 +68,6 @@ echo "" >> /etc/nginx/sites-enabled/chromecast
 echo "root /var/www/chromecast;" >> /etc/nginx/sites-enabled/chromecast
 echo "autoindex on;" >> /etc/nginx/sites-enabled/chromecast
 echo "}" >> /etc/nginx/sites-enabled/chromecast
-
 echo "server {" >> /etc/nginx/sites-enabled/webjs
 echo "server_name app.plex.tv;" >> /etc/nginx/sites-enabled/webjs
 echo "listen 80;" >> /etc/nginx/sites-enabled/webjs
@@ -97,8 +81,6 @@ echo "" >> /etc/nginx/sites-enabled/webjs
 echo "root /var/www/webjs;" >> /etc/nginx/sites-enabled/webjs
 echo "autoindex on;" >> /etc/nginx/sites-enabled/webjs
 echo "}" >> /etc/nginx/sites-enabled/webjs
-
-# Complete
 service nginx restart
 clear
 echo "Process complete, rock and roll!"
