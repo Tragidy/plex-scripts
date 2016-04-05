@@ -22,7 +22,7 @@ read plexip
 echo "$plexip app.plex.tv" >> /etc/hosts
 echo "$plexip chromecast.plex.tv" >> /etc/hosts
 echo "Setting plex services ip to $plexip"
-sleep 2
+sleep 1
 echo "That's all we need proceeding with installation."
 echo "Making sure system is up to date..."
 apt-get update -y >/dev/null 2>&1 &
