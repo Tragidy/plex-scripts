@@ -10,10 +10,9 @@ if [[ "$EUID" -ne 0 ]]; then
 	exit 1
 fi
 clear
-echo "PLEX for ARM DNS Trick"   
+echo "PLEX Transcoder limitation interceptor"   
 echo "script by TRAGiDY https://github.com/Tragidy/"  
-echo "Running this script as "$USER""
-echo "Using reliable non google, OpenDNS Servers"
+echo "Using reliable non google, DNS Servers"
 cp /etc/resolv.conf /etc/resolv.conf.bakup
 rm -rf /etc/resolv.conf
 touch /etc/resolv.conf
@@ -26,9 +25,6 @@ read plexip
 echo "$plexip app.plex.tv" >> /etc/hosts
 echo "$plexip chromecast.plex.tv" >> /etc/hosts
 echo "Setting plex services ip to $plexip"
-sleep 1
-echo "That's all we need proceeding with installation."
-echo "Making sure system is up to date..."
 apt-get update -y >/dev/null 2>&1 &
 wait $!
 echo "Updating packages completed"
