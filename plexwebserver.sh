@@ -3,9 +3,8 @@
 # By TRAGiDY https://github.com/Tragidy/
 # Released Under Apache 2.0 License 
 # http://www.apache.org/licenses/LICENSE-2.0
-# This script will work on Debian, Ubuntu, maybe other debian based distros
+# This script will work on Debian, maybe other debian based distros
 
-# Check for root
 if [[ "$EUID" -ne 0 ]]; then
 	echo "Sorry, you need to run this as root"
 	exit 1
