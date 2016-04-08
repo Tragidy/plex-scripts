@@ -5,6 +5,11 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 # This script will work on Debian, Ubuntu, maybe other debian based distros
 
+# Check for root
+if [[ "$EUID" -ne 0 ]]; then
+	echo "Sorry, you need to run this as root"
+	exit 1
+fi
 clear
 echo "PLEX for ARM DNS Trick"   
 echo "script by TRAGiDY https://github.com/Tragidy/"  
