@@ -5,6 +5,8 @@
 # http://www.apache.org/licenses/LICENSE-2.0
 # This script will work on Debian, maybe other debian based distros
 
+# this script is no longer needed in current plex server
+
 if [[ "$EUID" -ne 0 ]]; then
 	echo "Sorry, you need to run this as root"
 	exit 1
