@@ -1,4 +1,7 @@
 # plex-scripts
+
+THESE SCRIPTS ARE NO LONGER NEEDED IN THE LATEST ARM PORTS TRANSCODING IS ENABLED.
+
 Various Plex Media Server Scripts
 These are just automation scripts, as such the scripts may or may not work for you.
 
